@@ -3,4 +3,52 @@
    uuid = "AD2B431C-6FA9-4ED9-9B07-EA18B3A7A7C8"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF7F7577-E494-416D-BCA0-247DCDA9E750"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CinecApp/RestAPIexample/ViewModel/ProductListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "fetchProducts()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AF7F7577-E494-416D-BCA0-247DCDA9E750 - 7c643866740d09f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 () async -&gt; () in CinecApp.ProductListViewModel.fetchProducts() -&gt; ()"
+                  moduleName = "CinecApp.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gishanthadarshana/Documents/CINEC/CinecApp/CinecApp/RestAPIexample/ViewModel/ProductListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24">
+               </Location>
+               <Location
+                  uuid = "AF7F7577-E494-416D-BCA0-247DCDA9E750 - c52606046b088534"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (CinecApp.Product, CinecApp.Product) -&gt; Swift.Bool in closure #1 () async -&gt; () in CinecApp.ProductListViewModel.fetchProducts() -&gt; ()"
+                  moduleName = "CinecApp.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gishanthadarshana/Documents/CINEC/CinecApp/CinecApp/RestAPIexample/ViewModel/ProductListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

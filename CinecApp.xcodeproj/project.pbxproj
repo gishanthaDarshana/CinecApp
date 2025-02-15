@@ -13,6 +13,7 @@
 		859B02442D6062B00044188B /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 859B02432D6062B00044188B /* FirebaseAppCheck */; };
 		859B02462D6062B00044188B /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 859B02452D6062B00044188B /* FirebaseAppDistribution-Beta */; };
 		859B02562D6078F00044188B /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 859B02552D6078F00044188B /* FirebaseDatabase */; };
+		859B04342D6105CE0044188B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 859B04332D6105CE0044188B /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,19 @@
 			remoteInfo = CinecApp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		859B045A2D610F360044188B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		859B02082D6061310044188B /* CinecApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinecApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				859B02562D6078F00044188B /* FirebaseDatabase in Frameworks */,
+				859B04342D6105CE0044188B /* Alamofire in Frameworks */,
 				859B02442D6062B00044188B /* FirebaseAppCheck in Frameworks */,
 				859B023E2D6062B00044188B /* FirebaseAnalytics in Frameworks */,
 				859B02462D6062B00044188B /* FirebaseAppDistribution-Beta in Frameworks */,
@@ -146,6 +161,7 @@
 				859B02042D6061310044188B /* Sources */,
 				859B02052D6061310044188B /* Frameworks */,
 				859B02062D6061310044188B /* Resources */,
+				859B045A2D610F360044188B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,6 +178,7 @@
 				859B02432D6062B00044188B /* FirebaseAppCheck */,
 				859B02452D6062B00044188B /* FirebaseAppDistribution-Beta */,
 				859B02552D6078F00044188B /* FirebaseDatabase */,
+				859B04332D6105CE0044188B /* Alamofire */,
 			);
 			productName = CinecApp;
 			productReference = 859B02082D6061310044188B /* CinecApp.app */;
@@ -247,6 +264,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				859B023C2D6062B00044188B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				859B04322D6105CE0044188B /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 859B02092D6061310044188B /* Products */;
@@ -648,6 +666,14 @@
 				minimumVersion = 11.8.1;
 			};
 		};
+		859B04322D6105CE0044188B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -680,6 +706,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 859B023C2D6062B00044188B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
+		};
+		859B04332D6105CE0044188B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 859B04322D6105CE0044188B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

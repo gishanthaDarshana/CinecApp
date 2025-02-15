@@ -19,7 +19,7 @@ struct HomeView: View {
                         NavigationLink(destination: StudentsList()) {
                                 Text("FireBase Realtime Example")
                             }
-                        NavigationLink(destination: Text("Second View")) {
+                        NavigationLink(destination: ProductListView()) {
                                 Text("REST API Example")
                             }
                     }
