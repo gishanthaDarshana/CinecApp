@@ -12,12 +12,13 @@ struct StudentForm : View {
     @Binding var studentId: String
     @Binding var studentName: String
     @Binding var studentDepartment: String
-    
+    @Binding var dissableStudentIdField : Bool
     let onAction : () -> Void
     
     var body: some View {
         VStack{
             TextField("Enter ID", text: $studentId)
+                .disabled(dissableStudentIdField)
                 .roundedTextFieldStyle()
             TextField("Enter Department", text: $studentDepartment)
                 .roundedTextFieldStyle()
@@ -40,7 +41,7 @@ struct StudentForm : View {
 }
 
 #Preview {
-    StudentForm(actionText: "Test", studentId: .constant("qwerty"), studentName: .constant("ddddd"), studentDepartment: .constant("Depaaaa"), onAction: {
+    StudentForm(actionText: "Test", studentId: .constant("qwerty"), studentName: .constant("ddddd"), studentDepartment: .constant("Depaaaa"), dissableStudentIdField: .constant(true), onAction: {
         
     })
 }

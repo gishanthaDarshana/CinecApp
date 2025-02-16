@@ -15,5 +15,6 @@ protocol DatabaseManaging {
     func addStudent(to category: String, student: Student) async throws  
     func updateStudent(in category: String, student: Student) async throws
     func deleteStudent(from category: String, studentId: String) async throws
+    func deleteStudent(from category: String, studentId: String, completion: @escaping (Result<Void, DatabaseError>) -> Void)
     func getStudent(from category : String , studentId : String) async throws -> Student
 }
