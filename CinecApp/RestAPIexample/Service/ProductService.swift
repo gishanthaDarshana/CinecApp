@@ -29,17 +29,7 @@ class ProductService : ProductServiceProtocol {
     }
     
     func getProduct(id: Int) async throws -> Product {
-        let result: Result<Product, NetworkError> = await network.request(
-            httpMethod: .get,
-            endpoint: .productDetails(id: id), parameters: nil
-        )
-        
-        switch result {
-        case .success(let product):
-            return product
-        case .failure(let error):
-            throw error
-        }
+        //MARK: Complete the API Service with getting the Product by passing the product Id
     }
 
 }

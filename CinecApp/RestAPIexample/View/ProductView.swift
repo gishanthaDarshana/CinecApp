@@ -48,9 +48,6 @@ struct ProductView: View {
         }
         .padding()
         .navigationTitle("Product Details")
-        .onAppear {
-            productDetailViewModel.getProductDetail(id: productId)
-        }
     }
 }
 
