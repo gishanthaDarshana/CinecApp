@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct ProductListView: View {
+    //@StateObject var viewModel: ProductListViewModelWrong = .init()
+    
     @StateObject var viewModel: ProductListViewModel = .init()
+    
     var body: some View {
         VStack {
             if viewModel.errorMessage.isEmpty {

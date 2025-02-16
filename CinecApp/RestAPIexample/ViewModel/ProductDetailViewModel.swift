@@ -14,12 +14,16 @@ class ProductDetailViewModel : ObservableObject {
         self.service = service
     }
     
+    
+    //let service = ProductService()
+    
     @Published var productDetail : Product?
     
     func getProductDetail(id: Int) {
         Task{
             do {
                 let productDetail = try await self.service.getProduct(id: id)
+                //self.productDetail = try await self.service.getSpecificProduct(id: id)
                 self.productDetail = productDetail
             } catch {
                 print("Error \(error)")
