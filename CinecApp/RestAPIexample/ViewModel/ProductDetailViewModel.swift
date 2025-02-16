@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@MainActor
 class ProductDetailViewModel : ObservableObject {
     let service : ProductServiceProtocol
     

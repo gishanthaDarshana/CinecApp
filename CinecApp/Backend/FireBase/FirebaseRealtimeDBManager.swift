@@ -23,7 +23,7 @@ class FirebaseRealtimeDBManager: DatabaseManaging {
         let handle = databaseRef.child("students").observe(.value) { snapshot in
             // Check if the snapshot contains data in the expected format
             guard let value = snapshot.value as? [String: Any] else {
-                completion(.failure(.decodingError))
+                completion(.success(StudentGroups(iOS: [], android: [])))
                 return
             }
             
@@ -46,10 +46,10 @@ class FirebaseRealtimeDBManager: DatabaseManaging {
     
     // Add a new student to a specified category
     func addStudent(to category: String, student: Student) async throws {
-        let studentRef = databaseRef.child("students/\(category)/\(student.id)")
+        let studentRef = databaseRef.child("students/\(category)/\("SID:"+student.id)")
         
         let studentData: [String: Any] = [
-            "studentId": student.id,
+            "studentId": "SID:"+student.id,
             "name": student.name,
             "department": student.department
         ]
@@ -78,7 +78,7 @@ class FirebaseRealtimeDBManager: DatabaseManaging {
         }
     }
     
-    // Delete a student by their studentId from a specified category
+    // Delete a student by their studentId from a specified category not updates realtime
     func deleteStudent(from category: String, studentId: String) async throws {
         let studentRef = databaseRef.child("students/\(category)/\(studentId)")
         
@@ -86,6 +86,17 @@ class FirebaseRealtimeDBManager: DatabaseManaging {
             try await studentRef.removeValue()
         } catch {
             throw DatabaseError.unknownError(error)
+        }
+    }
+    
+    // Delete a student by their studentId from a specified category while keeps realtime update
+    func deleteStudent(from category: String, studentId: String, completion: @escaping (Result<Void, DatabaseError>) -> Void) {
+        self.databaseRef.child("students/\(category)/\(studentId)").removeValue { error, _ in
+            if let error = error {
+                completion(.failure(.unknownError(error)))
+            } else {
+                completion(.success(()))
+            }
         }
     }
     
