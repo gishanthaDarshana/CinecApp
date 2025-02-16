@@ -16,7 +16,7 @@ class ProductService : ProductServiceProtocol {
     
     func getProducts() async throws -> [Product] {
         let result: Result<[Product], NetworkError> = await network.request(
-                httpMethod: .get,
+            httpMethod: .get,
                 endpoint: .products, parameters: nil
             )
         

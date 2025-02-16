@@ -10,13 +10,24 @@ import SwiftUI
 struct ProductListView: View {
     @StateObject var viewModel: ProductListViewModel = .init()
     var body: some View {
-        List(viewModel.products) { product in
-            NavigationLink {
-                ProductView(productId: product.id)
-            } label: {
-                Text(product.title)
+        VStack {
+            if viewModel.errorMessage.isEmpty {
+                List(viewModel.products) { product in
+                    NavigationLink {
+                        ProductView(productId: product.id)
+                    } label: {
+                        Text(product.title)
+                    }
+                }
+            } else {
+                Text(viewModel.errorMessage)
             }
         }
+        .overlay(content: {
+            if viewModel.isLoading {
+                ProgressView()
+            }
+        })
         .onAppear {
             viewModel.fetchProducts()
         }
