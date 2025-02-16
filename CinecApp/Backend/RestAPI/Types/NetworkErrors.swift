@@ -7,6 +7,8 @@
 
 import Foundation
 enum NetworkError: Error {
+    case invalidURL
+    case invalidRequest
     case noInternetConnection
     case invalidResponse
     case serverError(statusCode: Int, message: String?)

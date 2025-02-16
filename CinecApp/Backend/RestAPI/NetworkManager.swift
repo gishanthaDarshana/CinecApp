@@ -21,26 +21,34 @@ class NetworkManager: NetworkServiceProtocol {
                 parameters: parameters,
                 encoding: JSONEncoding.default
             ).debugLog()
+            .validate(statusCode: 200..<300)
             .responseDecodable(of: T.self) { response in
-                if let statusCode = response.response?.statusCode, !(200...299).contains(statusCode) {
-                    let errorMessage = (try? JSONSerialization.jsonObject(with: response.data ?? Data(), options: []) as? [String: Any])?["message"] as? String
-                    continuation.resume(returning: .failure(.serverError(statusCode: statusCode, message: errorMessage)))
-                    return
-                }
-                
+                let statusCode = response.response?.statusCode ?? -1                            
+                // Handle Alamofire result
                 switch response.result {
                 case .success(let data):
                     continuation.resume(returning: .success(data))
+                    
                 case .failure(let error):
-                    if let afError = error.asAFError, afError.isSessionTaskError {
-                        continuation.resume(returning: .failure(.noInternetConnection))
-                    } else if let decodingError = error as? DecodingError {
-                        continuation.resume(returning: .failure(.decodingError(decodingError)))
-                    } else {
-                        continuation.resume(returning: .failure(.unknown(error)))
-                    }
+                    continuation.resume(returning: .failure(self.mapAlamofireError(error, statusCode: statusCode)))
                 }
             }
+        }
+    }
+    
+    // Helper function to map Alamofire errors to NetworkError
+    private func mapAlamofireError(_ error: AFError, statusCode: Int) -> NetworkError {
+        switch error {
+        case .invalidURL:
+            return .invalidURL
+        case .responseSerializationFailed:
+            return .invalidResponse
+        case .parameterEncodingFailed, .parameterEncoderFailed:
+            return .serverError(statusCode: statusCode, message: "Parameter Encoding Failed")
+        case .multipartEncodingFailed:
+            return .serverError(statusCode: statusCode, message: "Multipart Encoding Failed")
+        default:
+            return .serverError(statusCode: statusCode, message: error.localizedDescription)
         }
     }
 }
