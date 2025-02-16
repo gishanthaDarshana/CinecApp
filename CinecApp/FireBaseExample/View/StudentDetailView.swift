@@ -18,24 +18,11 @@ struct StudentDetailView: View {
                 actionText: "Update",
                 studentId: $detailViewModel.studentId,
                 studentName: $detailViewModel.studentName,
-                studentDepartment: $detailViewModel.studentDepartment,
+                studentDepartment: $detailViewModel.studentDepartment, dissableStudentIdField: .constant(true),
                 onAction: {
                     detailViewModel.updateStudentDetail()
                 }
             )
-            
-            Button(action: {
-                detailViewModel.deleteStudentDetail(id: studentId)
-            }) {
-                Text("Delete Student")
-                    .font(.title2)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(.red)
-            .padding()
         }
         
         .onAppear {
